@@ -6,3 +6,15 @@ function info(){
     'info'
     );
 }
+
+// Alerta jugador ganador
+function ganador(){
+    let timerInterval
+    Swal.fire({
+      title: 'Ha ganado el jugador <?php $_SESSION["jugador"]; ?>',
+      timer: 3500,
+      timerProgressBar: true,
+      showConfirmButton: false
+    
+    })
+}

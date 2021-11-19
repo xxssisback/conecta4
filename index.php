@@ -64,12 +64,11 @@ if(no_hi_ha_guanyador()){
     <input class="reload" type="button" size=2 name=columna value="Reiniciar juego" onclick="location.href='index.php';">
 </form>
     
-
 <?php 
 }else {
     $_SESSION["jugador"] == 1 ? $_SESSION["jugador"] = 2 : $_SESSION["jugador"] = 1;
 
-    echo "Felicitats jugador ". $_SESSION["jugador"];
+    echo "<script> ganador(); </script>"; 
 }
 
 
@@ -123,7 +122,7 @@ function gravar_moviment($num_col)
 function pintar_tablero()
 {
 
-echo "<pre >" ;
+echo "<pre>" ;
     for ($t = 0; $t < 6; $t++) {
         for ($tt = 0; $tt < 7; $tt++) {
             if ($_SESSION["tablero"][$t][$tt] == 1) {
