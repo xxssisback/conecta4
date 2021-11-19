@@ -276,16 +276,7 @@ function no_hi_ha_guanyador()
 
 <!-- Scripts -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-    function info(){
-        swal.fire(
-        '¿Como jugar?',
-        'Introduce del 1-7...',
-        'info'
-    );
-    }
-</script>
+<script src="assets/js/scripts.js"></script>
 
 
 
