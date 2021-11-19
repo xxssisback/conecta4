@@ -27,19 +27,38 @@ div.title h1.st{
   background-position: 50% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: -10px;
+  margin-bottom: 10px;
 }
 
-div.title div.authors span.authors{
+div.title div.authors span.authors {
   color: rgb(63, 63, 63);
   font-family: Arial, Helvetica, sans-serif;
+  background: none;
 }
 
 div.title div.authors span.authors font{
-  color: #404eb3;
+  color: #b34040;
   text-decoration-line: underline;
 }
 
+.authors {
+  background: white;
+  padding: 6px 8px 6px 8px;
+  border-radius: 8px;
+  width: 290px;
+  text-align-last: center;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.authors:hover{
+  background: rgb(218, 48, 48);
+  transition: 0.4s;
+}
+
+span.authors:hover{
+  color: white;
+}
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -66,7 +85,7 @@ pre {
 /* Botones */
 
 form input.insert {
-  width: 180px;
+  width: 300px;
   text-align-last: center;
   padding: 6px 15px 6px 15px;
   border-radius: 8px;
@@ -79,8 +98,33 @@ form input.insert {
   color: rgb(143, 143, 143);
 }
 
+form .reload {
+  width: 300px;
+  text-align-last: center;
+  padding: 6px 15px 6px 15px;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  background-color: rgb(255 63 63);
+  border: 2px solid #ff1f1f;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  transition: 1s;
+  color: rgb(255 255 255);
+}
+
+form .reload:hover {
+  background-color: rgb(158, 29, 29);
+  border: 2px solid #911a1a;
+  font-weight: 100;
+  transition: all 1s;
+  color: white;
+}
+
+form {
+  text-align-last: center;
+}
+
 form input.insert:hover {
-  width: 200px;
   background-color: rgb(50 50 50);
   border: 2px solid #2c2c2c;
   font-weight: 100;
@@ -111,6 +155,48 @@ form input.insert::-ms-input-placeholder:hover { /* Microsoft Edge */
   cursor: url(../img/cursoradd.png);
 }
 
+/* Alert */
+.swal2-icon.swal2-info.swal2-icon-show {
+  background: #ffffff73;
+  backdrop-filter: blur(8px);
+  color: black;
+  border-color: black;
+}
+
+.swal2-icon.swal2-info.swal2-icon-show {
+  background: #ffffff73;
+  backdrop-filter: blur(8px);
+  color: #666666;
+  border-color: #858585;
+}
+
+.swal2-icon.swal2-info {
+  border-color: #565656;
+  color: #5c5c5c;
+}
+
+button.swal2-confirm.swal2-styled {
+  border: 0;
+  border-radius: .25em;
+  background: initial;
+  background-color: #cb3434;
+  color: #fff;
+  width: 200px;
+  font-size: 1em;
+}
+
+.swal2-container.swal2-center.swal2-backdrop-show {
+  backdrop-filter: blur(8px);
+}
+
+h2#swal2-title {
+  font-family: Arial;
+}
+
+div#swal2-html-container {
+  font-family: Arial;
+  font-size: 20px;
+}
 
 /* Background */
 

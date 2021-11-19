@@ -6,15 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
-    <title>Connect4 Game</title>
+    <title>CONNECT4 GAME</title>
 </head>
 <body>
 <div class="title">
     <h1 class="pt">CONNECT4</h1>
     <h1 class="st">GAME</h1>
     <div class="authors">
-        <span class="authors">Desenvolupat i dissenyat per<br>
-        <font>Pau Motos</font> & <font>Sergio Muñoz</font></span>
+        <span class="authors"><a style="cursor: pointer;" onclick="info()">Pulsa aqui para saber como jugar</a></span>
     </div>
 </div>
 <div class="container">
@@ -24,8 +23,8 @@ session_start();
 
 
 
-if (!isset($_SESSION["taulell"]) || !isset($_REQUEST["columna"])) {
-    $_SESSION["taulell"]=[
+if (!isset($_SESSION["tablero"]) || !isset($_REQUEST["columna"])) {
+    $_SESSION["tablero"]=[
         [" "," "," "," "," "," "," "],
         [" "," "," "," "," "," "," "],
         [" "," "," "," "," "," "," "],
@@ -55,14 +54,17 @@ if(isset($_REQUEST["columna"])) {
     }
 }
 
-pintar_taulell();
+pintar_tablero();
 if(no_hi_ha_guanyador()){
     ?>
     <br>
     <form action=index.php method="GET">
-    <label>Introdueix una posició del 1 al 7</label>
-    <input class="insert" type="text" size=2 min=1 max=7 name=columna placeholder="Moviment del jugador <?php echo $_SESSION["jugador"];?>" autofocus>
+    <input class="insert" type="text" size=2 min=1 max=7 name=columna placeholder="Introduce columna JUGADOR <?php echo $_SESSION["jugador"];?>" autofocus>
+    <br><br>
+    <input class="reload" type="button" size=2 name=columna value="Reiniciar juego" onclick="location.href='index.php';">
 </form>
+    
+
 <?php 
 }else {
     $_SESSION["jugador"] == 1 ? $_SESSION["jugador"] = 2 : $_SESSION["jugador"] = 1;
@@ -84,7 +86,7 @@ function processar_moviment($columna)
     ) {
         $num_col = intval($columna);
        
-        if ($_SESSION["taulell"][0][$num_col - 1] != 0) {
+        if ($_SESSION["tablero"][0][$num_col - 1] != 0) {
             echo "Columna plena";
            
             return false;
@@ -99,18 +101,16 @@ function processar_moviment($columna)
 
 function gravar_moviment($num_col)
 {
-    
-
     $num_col--;
-    
     for ($c = 5; $c >= 0; $c--) {
-        if ($_SESSION["taulell"][$c][$num_col] == " ") {
+        if ($_SESSION["tablero"][$c][$num_col] == " ") {
             if ($_SESSION["jugador"]==1) {
-                $_SESSION["taulell"][$c][$num_col] = "1";
-               
+                $_SESSION["tablero"][$c][$num_col] = "1";
+                
                 
             }else if ($_SESSION["jugador"]==2) {
-                $_SESSION["taulell"][$c][$num_col] = "2";
+                $_SESSION["tablero"][$c][$num_col] = "2";
+                
             }
           
             $c = -1;
@@ -120,15 +120,22 @@ function gravar_moviment($num_col)
 
 }
 
-function pintar_taulell()
+function pintar_tablero()
 {
 
 echo "<pre >" ;
     for ($t = 0; $t < 6; $t++) {
         for ($tt = 0; $tt < 7; $tt++) {
-            echo "|" . $_SESSION["taulell"][$t][$tt]; 
+            if ($_SESSION["tablero"][$t][$tt] == 1) {
+                echo "🔵";
+            } else if (($_SESSION["tablero"][$t][$tt] == 2)) {
+                echo "🔴";
+            } else {
+                echo "🔘";
+            }
+            ; 
         }
-        echo "|<br>";
+        echo "<br>";
     }
 echo "</pre>";
 }
@@ -140,7 +147,7 @@ function no_hi_ha_guanyador()
     for ($t = 0; $t < 6; $t++) {
         $n_uns = 0;
         for ($tt = 0; $tt < 7; $tt++) {
-            if ($_SESSION["taulell"][$t][$tt] == "1") {
+            if ($_SESSION["tablero"][$t][$tt] == "1") {
                 $n_uns++;
                 if ($n_uns == 4) {
                     return false;
@@ -156,7 +163,7 @@ function no_hi_ha_guanyador()
     for ($t = 0; $t < 6; $t++) {
         $n_uns = 0;
         for ($tt = 0; $tt < 7; $tt++) {
-            if ($_SESSION["taulell"][$t][$tt] == "2" ) {
+            if ($_SESSION["tablero"][$t][$tt] == "2" ) {
                 $n_uns++;
                 if ($n_uns == 4) {
                     return false;
@@ -172,7 +179,7 @@ function no_hi_ha_guanyador()
     for ($t = 0; $t < 7; $t++) {
         $n_uns = 0;
         for ($tt = 0; $tt < 6; $tt++) {
-            if ($_SESSION["taulell"][$tt][$t] == "1") {
+            if ($_SESSION["tablero"][$tt][$t] == "1") {
                 $n_uns++;
                 if ($n_uns == 4) {
                     return false;
@@ -188,7 +195,7 @@ function no_hi_ha_guanyador()
     for ($t = 0; $t < 7; $t++) {
         $n_uns = 0;
         for ($tt = 0; $tt < 6; $tt++) {
-            if ($_SESSION["taulell"][$tt][$t] == "2") {
+            if ($_SESSION["tablero"][$tt][$t] == "2") {
                 $n_uns++;
                 if ($n_uns == 4) {
                     return false;
@@ -206,7 +213,7 @@ function no_hi_ha_guanyador()
         for ($tt=0; $tt < 7; $tt++) {  
        
             if (($t+$tt)>=0 && ($t+$tt)<6 && $tt>=0 && $tt<7) {
-                if($_SESSION["taulell"][$t+$tt][$tt]=="1"){
+                if($_SESSION["tablero"][$t+$tt][$tt]=="1"){
     
                     $n_uns++;
                     if ($n_uns >=4 ) return false;
@@ -222,7 +229,7 @@ function no_hi_ha_guanyador()
         for($tt=0;$tt<7;$tt++) { 
          
             if(($t-$tt)>=0 && ($t-$tt)<6 && $tt>=0 && $tt<7) {
-                if($_SESSION["taulell"][$t-$tt][$tt] == "1") {
+                if($_SESSION["tablero"][$t-$tt][$tt] == "1") {
                     $n_uns++;
                     if($n_uns >= 4) return false;
                 } else {
@@ -237,7 +244,7 @@ function no_hi_ha_guanyador()
         for ($tt=0; $tt < 7; $tt++) { 
            
             if (($t+$tt)>=0 && ($t+$tt)<6 && $tt>=0 && $tt<7) {
-                if($_SESSION["taulell"][$t+$tt][$tt]=="2"){
+                if($_SESSION["tablero"][$t+$tt][$tt]=="2"){
                     $n_uns++;
                     if ($n_uns >=4 ) return false;
                 }else
@@ -251,7 +258,7 @@ function no_hi_ha_guanyador()
         $n_uns = 0;
         for($tt=0;$tt<7;$tt++) {
             if(($t-$tt)>=0 && ($t-$tt)<6 && $tt>=0 && $tt<7) {
-                if($_SESSION["taulell"][$t-$tt][$tt] == "2") { 
+                if($_SESSION["tablero"][$t-$tt][$tt] == "2") { 
                     $n_uns++;
                     if($n_uns >= 4) return false;
                 } else {
@@ -269,5 +276,18 @@ function no_hi_ha_guanyador()
 
 <!-- Scripts -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function info(){
+        swal.fire(
+        '¿Como jugar?',
+        'Introduce del 1-7...',
+        'info'
+    );
+    }
+</script>
+
+
+
 </body>
 </html>
