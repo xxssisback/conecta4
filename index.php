@@ -131,7 +131,7 @@ echo "<pre >" ;
             } else if (($_SESSION["tablero"][$t][$tt] == 2)) {
                 echo "🔴";
             } else {
-                echo "🔘";
+                echo "⚪";
             }
             ; 
         }
