@@ -9,56 +9,26 @@ div.title {
   align-items: center;
 }
 
-div.title h1.pt{
-  margin-top: -10px;
-  font-size: 50px;
+div.title h1.pt {
+  margin-top: 0px;
+  font-size: 90px;
   color: #f5f5f7;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
   margin-bottom: -100px;
 }
 
-div.title h1.st{
-  font-size: 120px;
+div.title h1.st {
+  font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: bolder;
-  background: radial-gradient(#eff1ff, #000);
-  background-size: 100% 200%;
-  background-position: 50% 100%;
+  font-weight: 400;
+  color: #333333;
+  text-decoration: underline;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
+  margin-top: 100px;
 }
 
-div.title div.authors span.authors {
-  color: rgb(63, 63, 63);
-  font-family: Arial, Helvetica, sans-serif;
-  background: none;
-}
-
-div.title div.authors span.authors font{
-  color: #b34040;
-  text-decoration-line: underline;
-}
-
-.authors {
-  background: white;
-  padding: 6px 8px 6px 8px;
-  border-radius: 8px;
-  width: 290px;
-  text-align-last: center;
-  text-align: center;
-  transition: 0.4s;
-}
-
-.authors:hover{
-  background: rgb(218, 48, 48);
-  transition: 0.4s;
-}
-
-span.authors:hover{
-  color: white;
-}
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -72,6 +42,7 @@ span.authors:hover{
   max-width: 400px;
   max-height: 600px;
   border-radius: 8px;
+  box-shadow: #0000001c 0px 10px 39px 0px;
 }
 
 /* Tablero */
@@ -90,12 +61,11 @@ form input.insert {
   padding: 6px 15px 6px 15px;
   border-radius: 8px;
   letter-spacing: 1px;
-  background-color: rgb(221 221 221);
-  border: 2px solid #d5d5d5;
+  background-color: rgb(173 217 255);
+  border: 2px solid #9ed2ff;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
   transition: 1s;
-  color: rgb(143, 143, 143);
 }
 
 form .reload {
@@ -104,20 +74,20 @@ form .reload {
   padding: 6px 15px 6px 15px;
   border-radius: 8px;
   letter-spacing: 1px;
-  background-color: rgb(255 63 63);
-  border: 2px solid #ff1f1f;
+  background-color: rgb(255 209 209);
+  border: 2px solid #ffbaba;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
   transition: 1s;
-  color: rgb(255 255 255);
+  color: #ff2f2f;
 }
 
 form .reload:hover {
-  background-color: rgb(158, 29, 29);
-  border: 2px solid #911a1a;
+  background-color: rgb(255 108 108);
+  border: 2px solid #ff6161;
   font-weight: 100;
   transition: all 1s;
-  color: white;
+  color: #ffe6e6;
 }
 
 form {
@@ -125,23 +95,16 @@ form {
 }
 
 form input.insert:hover {
-  background-color: rgb(50 50 50);
-  border: 2px solid #2c2c2c;
+  background-color: rgb(231 231 231);
+  border: 2px solid #d9d9d9;
   font-weight: 100;
   transition: all 1s;
-  color: white;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: rgb(143, 143, 143);
+  color: #296aa3;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 600;
   opacity: 1; /* Firefox */
-  }
-
-::placeholder:hover { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: rgba(143, 143, 143, 0);
-  cursor: url(../img/cursoradd.png);
   }
 
 form input.insert::-ms-input-placeholder { /* Microsoft Edge */
@@ -150,36 +113,31 @@ form input.insert::-ms-input-placeholder { /* Microsoft Edge */
   font-weight: 600;
 }
 
-form input.insert::-ms-input-placeholder:hover { /* Microsoft Edge */
-  color: rgba(143, 143, 143, 0);
-  cursor: url(../img/cursoradd.png);
-}
-
 /* Alert */
 .swal2-icon.swal2-info.swal2-icon-show {
-  background: #ffffff73;
+  background: #fff;
   backdrop-filter: blur(8px);
   color: black;
   border-color: black;
 }
 
 .swal2-icon.swal2-info.swal2-icon-show {
-  background: #ffffff73;
+  background: #fff;
   backdrop-filter: blur(8px);
-  color: #666666;
-  border-color: #858585;
+  color: #add9ff;
+  border-color: #add9ff;
 }
 
 .swal2-icon.swal2-info {
-  border-color: #565656;
-  color: #5c5c5c;
+  border-color: #add9ff;
+  color: #add9ff;
 }
 
 button.swal2-confirm.swal2-styled {
   border: 0;
   border-radius: .25em;
   background: initial;
-  background-color: #cb3434;
+  background-color: #add9ff;
   color: #fff;
   width: 200px;
   font-size: 1em;
@@ -198,8 +156,22 @@ div#swal2-html-container {
   font-size: 20px;
 }
 
+i.icon.fas.fa-info-circle {
+  margin-top: 20px;
+  size: 10px;
+  color: #76bfff;
+  transition: 0.5s;
+  font-size: 20px;
+}
+
+i.icon.fas.fa-info-circle:hover {
+  color: #ff2f2f;
+  transition: 0.5s;
+  font-size: 20px;
+}
+
 /* Background */
 
 html body {
-  background-color: #0a0a0a;
+  background-color: #add9ff;
 }
