@@ -72,7 +72,8 @@ if(no_hi_ha_guanyador()){
 }else {
     $_SESSION["jugador"] == 1 ? $_SESSION["jugador"] = 2 : $_SESSION["jugador"] = 1;
 
-    echo "<script> ganador(); </script>"; 
+    echo "<script> ganador1() </script>";
+    echo "<script> ganador2() </script>";
 }
 
 
@@ -89,15 +90,12 @@ function processar_moviment($columna)
     ) {
         $num_col = intval($columna);
        
-        if ($_SESSION["tablero"][0][$num_col - 1] != 0) {
-            echo"Pon otra columna que esta está llena";
-           
+        if ($_SESSION["tablero"][0][$num_col - 1] != 0) {           
             return false;
         }
         gravar_moviment($num_col);
         return true;
     } else {
-        echo"Only numbers";
         return false;
     }
 }
