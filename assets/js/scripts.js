@@ -2,7 +2,7 @@
 function info(){
   swal.fire(
   '¿Como jugar?',
-  'Introduce del 1-7...',
+  'Uno de los jugadores coloca cuatro o más fichas en una línea contínua vertical, horizontal o diagonalmente. Este jugador gana la partida. Todas las casillas del tablero están ocupadas y ningún jugador cumple la condición anterior para ganar. En este caso la partida finaliza en empate.',
   'info'
   );
 }
@@ -36,32 +36,9 @@ let timerInterval
 Swal.fire({
   title: 'Error',
   text: 'Introduce una columna que no esté completa y asegurate de que introdcues solamente numeros del 1 al 7.',
-  timer: 4000,
+  timer: 2500,
   timerProgressBar: true,
   showConfirmButton: false
 
 })
-}
-
-// Columna plena
-function columna_plena(){
-let timerInterval
-Swal.fire({
-  title: 'Columna plena',
-  timer: 2000,
-  timerProgressBar: true,
-  showConfirmButton: false
-
-})
-}
-
-// Only Numbers
-function only_numbers(){
-  let timerInterval
-  Swal.fie({
-    title: 'Introduce solamente numeros',
-    timer: 2000,
-    timerProgressBar: true,
-    showConfirmButton: false
-  })
 }

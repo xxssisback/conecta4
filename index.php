@@ -66,14 +66,25 @@ if(no_hi_ha_guanyador()){
     <input class="insert" type="text" size=2 min=1 max=7 name=columna placeholder="Introduce columna JUGADOR <?php echo $_SESSION["jugador"];?>" autofocus>
     <br><br>
     <input class="reload" type="button" size=2 name=columna value="Reiniciar juego" onclick="location.href='index.php';">
-</form>
+    </form>
     
 <?php 
 }else {
-    $_SESSION["jugador"] == 1 ? $_SESSION["jugador"] = 2 : $_SESSION["jugador"] = 1;
 
-    echo "<script> ganador1() </script>";
-    echo "<script> ganador2() </script>";
+    if ( $_SESSION["jugador"] == 2) {
+        echo "<script> ganador1() </script>";
+    } else {
+        echo "<script> ganador2() </script>";
+    }
+    
+    ?>
+    <br>
+    <form action=index.php method="GET">
+    <input class="reload" type="button" size=2 name=columna value="Reiniciar juego" onclick="location.href='index.php';">
+    </form>
+    
+<?php 
+    
 }
 
 
