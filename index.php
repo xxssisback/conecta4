@@ -293,7 +293,7 @@
             <form action=index.php method="GET">
                 <input class="insert" type="text" size=2 min=1 max=7 name=columna placeholder="Introduce columna JUGADOR <?php echo $_SESSION["jugador"];?>" autofocus>
                 <br><br>
-                <input class="reload" type="button" size=2 name=columna value="Reiniciar juego" onclick="location.href='index.php';">
+                <input class="reload" style="cursor: pointer;" type="button" size=2 name=columna value="Reiniciar juego" onclick="location.href='index.php';">
             </form>
 
             <!-- Aqui tenemos el boton para saver como jugar. Llama a una funcion de SwetAlert2 donde te informa de las normas del juego. -->
