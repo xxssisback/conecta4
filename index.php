@@ -9,6 +9,10 @@
     <title>CONNECT4 GAME</title>
 </head>
 <body>
+    <!-- Scripts -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="assets/js/scripts.js"></script>
+
 <div class="title">
     <h1 class="pt">CONNECT4</h1>
     <h1 class="st">GAME</h1>
@@ -50,7 +54,7 @@ if(isset($_REQUEST["columna"])) {
        $_SESSION["jugador"] == 1 ? $_SESSION["jugador"] = 2 : $_SESSION["jugador"] = 1;
 
     }else{
-        echo "Columna erronea";
+        echo "<script> columna_erronea()</script>";
     }
 }
 
@@ -86,14 +90,14 @@ function processar_moviment($columna)
         $num_col = intval($columna);
        
         if ($_SESSION["tablero"][0][$num_col - 1] != 0) {
-            echo "Columna plena";
+            echo"Pon otra columna que esta está llena";
            
             return false;
         }
         gravar_moviment($num_col);
         return true;
     } else {
-        echo"Columna correcta";
+        echo"Only numbers";
         return false;
     }
 }
@@ -272,12 +276,5 @@ function no_hi_ha_guanyador()
 }
 ?>
 </div>
-
-<!-- Scripts -->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="assets/js/scripts.js"></script>
-
-
-
 </body>
 </html>
