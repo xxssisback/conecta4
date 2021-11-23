@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
         <script src="https://kit.fontawesome.com/5a9306bf90.js" crossorigin="anonymous"></script>
-        <title>Conecta 4 -Pau Motos & Sergio Muñoz</title>
+        <title>Conecta 4 | Pmotos & Smunoz</title>
     </head>
     <body>
         <!-- Scripts -->
