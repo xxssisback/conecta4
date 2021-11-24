@@ -1,3 +1,6 @@
+<!-- Developed/Designed by Pau Motos & Sergio Muñoz -->
+<!-- Conecta 4 - PHP WEB CRUD -->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -67,16 +70,24 @@
 
 
 
-        /**
-         * 
-         */
+       
         pintar_tablero();
-        if(no_hi_ha_guanyador()){
+
+         /**
+         * Este el el main del juego, quien lo controla.
+         * - En cada movimiento se comprueba si existe un ganador, en este caso como no existe salta está misma funcion, imprimiendo el input escribes la columna deseada.
+         */
+        if(no_hay_ganador()){
             ?>
             <br>
-
+            <form action=index.php method="GET">
+                <input class="insert" type="text" size=2 min=1 max=7 name=columna placeholder="Introduce columna JUGADOR <?php echo $_SESSION["jugador"];?>" autofocus>
+            </form>
             
         <?php 
+        /**
+         * - Cuando ya por fin se comprueba que hay ganador, saltará el else. Que comprueba quien ha ganado para ejecutar la alerta, Si es ganador 1 ejecuta el script ganador1.
+         */
         }else {
 
             if ( $_SESSION["jugador"] == 2) {
@@ -85,13 +96,20 @@
                 echo "<script> ganador2() </script>";
             }
             
-            ?>
-            <br>    
+            ?><br>
+            <!-- Una vez que se ejecuta el else, se imprimirá un input distinto. Este aparece con un estilo apagado y desabilitado para que el jugador no siga jugando en modo finalizado -->
+            <form action=index.php method="GET">
+                <input disabled class="diss" type="text" size=2 min=1 max=7 name=columna placeholder="Introduce columna JUGADOR <?php echo $_SESSION["jugador"];?>" autofocus>
+            </form>  
         <?php 
             
         }
 
 
+        /**
+         * Esta funcion es la que se encarga de procesar movimiento.
+         * - Su funcion es la de recivir la columna seleccionada por el jugador corresponciente y asignarla
+         */
         function processar_moviment($columna)
         {
             if (
@@ -115,27 +133,40 @@
             }
         }
 
+        /**
+         * Esta funcion se encarga de gravar el movimiento de los jugadores.
+         * - Si la posicion esta vacia se puede colocar en la columna
+         * - Si esta llena devuelve -1 para que asi controlar el FOR
+         * - Si no esta llena se coloca por el jugador asignandole un num
+         *  - J1 = 1
+         *  - J2 = 2
+         */
         function gravar_moviment($num_col)
         {
             $num_col--;
-            for ($c = 5; $c >= 0; $c--) {
-                if ($_SESSION["tablero"][$c][$num_col] == " ") {
+            for ($i = 5; $i >= 0; $i--) {
+                if ($_SESSION["tablero"][$i][$num_col] == " ") {
                     if ($_SESSION["jugador"]==1) {
-                        $_SESSION["tablero"][$c][$num_col] = "1";
+                        $_SESSION["tablero"][$i][$num_col] = "1";
                         
                         
                     }else if ($_SESSION["jugador"]==2) {
-                        $_SESSION["tablero"][$c][$num_col] = "2";
+                        $_SESSION["tablero"][$i][$num_col] = "2";
                         
                     }
                 
-                    $c = -1;
+                    $i = -1;
                     return; 
                 }
             }
 
         }
 
+
+        /**
+         * Esta funcion es la que se encarga de pintar el tablero
+         * - Recive las fichas en numeros y las cambia por fichas asignandolas a cada jugador
+         */
         function pintar_tablero()
         {
 
@@ -156,7 +187,12 @@
         echo "</pre>";
         }
 
-        function no_hi_ha_guanyador()
+        /**
+         * Esta funcion es la que se encarga de comprovar si hay ganador.
+         * - Lo hace de forma horizontal, verticla y diagonal
+         * - Retrona FALSE para asi acavar el juego.
+         */
+        function no_hay_ganador()
         {
         
 
@@ -291,12 +327,11 @@
 
             <!-- Formulario de botones (Introducir y reiniciar) -->
             <form action=index.php method="GET">
-                <input class="insert" type="text" size=2 min=1 max=7 name=columna placeholder="Introduce columna JUGADOR <?php echo $_SESSION["jugador"];?>" autofocus>
-                <br><br>
+                <br>
                 <input class="reload" style="cursor: pointer;" type="button" size=2 name=columna value="Reiniciar juego" onclick="location.href='index.php';">
             </form>
 
-            <!-- Aqui tenemos el boton para saver como jugar. Llama a una funcion de SwetAlert2 donde te informa de las normas del juego. -->
+            <!-- Aqui tenemos el boton para saber como jugar. Llama a una funcion de SwetAlert2 donde te informa de las normas del juego. -->
             <i class="icon fas fa-info-circle" style="cursor: pointer;" onclick="info()"></i>
         </div>
     </body>

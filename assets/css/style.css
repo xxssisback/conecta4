@@ -114,6 +114,25 @@ form input.insert::-ms-input-placeholder { /* Microsoft Edge */
   font-weight: 600;
 }
 
+form input.diss{
+  cursor:not-allowed; 
+  opacity:0.3;
+  width: 300px;
+  text-align-last: center;
+  padding: 6px 15px 6px 15px;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  background-color: rgb(189, 189, 189);
+  border: 2px solid #b6b6b6;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  transition: 1s;
+}
+
+form input.diss::placeholder{
+  color: rgb(71, 71, 71);
+}
+
 /* Alert */
 .swal2-icon.swal2-info.swal2-icon-show {
   background: #fff;

@@ -1,4 +1,7 @@
-// Aleta de como jugar
+/* 
+Alerta del icono Info
+- Está funcion muestra un bocadillo central con la información del juego.
+*/
 function info(){
   swal.fire(
   '¿Como jugar?',
@@ -7,30 +10,41 @@ function info(){
   );
 }
 
-// Alerta jugador ganador
+
+/* 
+Alerta del ganador 1 (Azul)
+- Está funcion muestra un bocadillo central con el ganador 1
+*/
 function ganador1(){
   let timerInterval
   Swal.fire({
     title: 'Ha ganado el jugador 1',
-    timer: 3500,
+    timer: 2000,
     timerProgressBar: true,
     showConfirmButton: false
   
   })
 }
 
+/* 
+Alerta del ganador 2 (Rojo)
+- Está funcion muestra un bocadillo central con el ganador 2
+*/
 function ganador2(){
   let timerInterval
   Swal.fire({
     title: 'Ha ganado el jugador 2',
-    timer: 3500,
+    timer: 2000,
     timerProgressBar: true,
     showConfirmButton: false
   
   })
 }
 
-// Columna erronea
+/* 
+Alerta de erro
+- Está funcion muestra un bocadillo central con la información que se debe realizar en caso de error
+*/
 function columna_erronea(){
 let timerInterval
 Swal.fire({
